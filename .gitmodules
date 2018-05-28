@@ -1,0 +1,3 @@
+[submodule "efda"]
+	path = efda
+	url = git@github.com:srcclr/efda.git
