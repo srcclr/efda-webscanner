@@ -21,10 +21,7 @@ def scan_owasp():
     target = request.form["target"]
     project_paths = utils.find_efda_projects("efda")
 
-    if target == "all":
-        # TODO
-        return None
-    elif target not in project_paths:
+    if target not in project_paths:
         abort(404)
     else:
         return jsonify(owasp.scan(target))
@@ -35,10 +32,7 @@ def scan_srcclr():
     target = request.form["target"]
     project_paths = utils.find_efda_projects("efda")
 
-    if target == "all":
-        # TODO
-        return None
-    elif target not in project_paths:
+    if target not in project_paths:
         abort(404)
     else:
         return jsonify(sourceclear.scan(target))
