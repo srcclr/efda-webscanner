@@ -10,3 +10,6 @@ curl -o $WEBROOT/scanners/dependency-check.zip -L \
 # TODO: Check sha256 hash of download.
 
 unzip $WEBROOT/scanners/dependency-check.zip -d $WEBROOT/scanners/
+
+rm $WEBROOT/scanners/dependency-check.zip
+mkdir -p $WEBROOT/scanners/dependency-check/tmp
