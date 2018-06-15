@@ -1,8 +1,15 @@
-from flask import Flask
+from flask import Flask, jsonify
 
-app = Flask(__name__)
+from app import utils
+
+server = Flask(__name__)
 
 
-@app.route("/")
+@server.route("/")
 def hello():
     return "Hello World!"
+
+
+@server.route("/efda/list")
+def list_efda():
+    return jsonify(utils.find_efda_projects("efda"))
