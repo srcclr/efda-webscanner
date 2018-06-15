@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 
 from app import utils
-from app.scanners import owasp
+from app.scanners import owasp, sourceclear
 
 server = Flask(__name__)
 
@@ -28,3 +28,17 @@ def scan_owasp():
         abort(404)
     else:
         return jsonify(owasp.scan(target))
+
+
+@server.route("/scan/srcclr", methods=["POST"])
+def scan_srcclr():
+    target = request.form["target"]
+    project_paths = utils.find_efda_projects("efda")
+
+    if target == "all":
+        # TODO
+        return None
+    elif target not in project_paths:
+        abort(404)
+    else:
+        return jsonify(sourceclear.scan(target))
