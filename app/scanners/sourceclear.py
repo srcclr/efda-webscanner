@@ -42,6 +42,12 @@ def normalize_json(data):
     vulnerabilities = data["vulnerabilities"]
     for i in vulnerabilities:
         cve = i["cve"]
+
+        # Prepend CVE- to each identifier to make it consistent with OWASP's
+        # output.
+        if cve:
+            cve = "CVE-" + cve
+
         title = i["title"]
         ret["vulnerabilities"].append( (cve, title) )
 
