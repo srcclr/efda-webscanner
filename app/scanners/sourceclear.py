@@ -24,7 +24,28 @@ def scan(project_dir):
     # Raises CalledProcessError is return code is non-zero.
     result.check_returncode()
 
-    return json.loads(stdout)
+    return normalize_json(json.loads(stdout))
+
+
+def normalize_json(data):
+    ret = {}
+    ret["libraries"] = []
+    ret["vulnerabilities"] = []
+
+    data = data["records"][0]
+    libraries = data["libraries"]
+    for i in libraries:
+        name = i["name"]
+        found_versions = [v["version"] for v in i["versions"]]
+        ret["libraries"].append( (name, found_versions) )
+
+    vulnerabilities = data["vulnerabilities"]
+    for i in vulnerabilities:
+        cve = i["cve"]
+        title = i["title"]
+        ret["vulnerabilities"].append( (cve, title) )
+
+    return ret
 
 
 if __name__ == "__main__":
