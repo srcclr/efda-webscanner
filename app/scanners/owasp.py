@@ -29,6 +29,35 @@ def scan(project_dir):
 
     os.remove(outfile)
 
+    return normalize_json(ret)
+
+
+def normalize_json(data):
+    ret = {}
+    ret["libraries"] = []
+    ret["vulnerabilities"] = []
+
+    dependencies = data["dependencies"]
+    for dep in dependencies:
+        try:
+            name = dep["description"]
+        except KeyError:
+            name = None
+
+        found_versions = list(set([
+            i["value"] for i in dep["evidenceCollected"]["versionEvidence"]
+        ]))
+
+        ret["libraries"].append( (name, found_versions) )
+
+        try:
+            for i in dep["vulnerabilities"]:
+                cve = i["name"]
+                title = i["description"]
+                ret["vulnerabilities"].append( (cve, title) )
+        except KeyError:
+            pass
+
     return ret
 
 
