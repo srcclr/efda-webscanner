@@ -25,7 +25,9 @@ def scan_owasp():
     project_paths = utils.find_efda_projects("efda")
 
     if target not in project_paths:
-        abort(404)
+        ret = {}
+        ret["err_msg"] = "Target {} not found in EFDA.".format(target)
+        return jsonify(ret), 404
     else:
         return jsonify(owasp.scan(target))
 
@@ -36,7 +38,9 @@ def scan_srcclr():
     project_paths = utils.find_efda_projects("efda")
 
     if target not in project_paths:
-        abort(404)
+        ret = {}
+        ret["err_msg"] = "Target {} not found in EFDA.".format(target)
+        return jsonify(ret), 404
     else:
         try:
             return jsonify(sourceclear.scan(target))
