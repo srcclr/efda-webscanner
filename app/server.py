@@ -3,6 +3,9 @@ from flask import Flask, request, jsonify
 from app import utils
 from app.scanners import owasp, sourceclear
 
+import subprocess
+
+
 server = Flask(__name__)
 
 
@@ -35,4 +38,10 @@ def scan_srcclr():
     if target not in project_paths:
         abort(404)
     else:
-        return jsonify(sourceclear.scan(target))
+        try:
+            return jsonify(sourceclear.scan(target))
+        except subprocess.CalledProcessError as e:
+            ret = {}
+            ret["err_msg"] = e.stderr.decode()
+
+            return jsonify(ret), 500
