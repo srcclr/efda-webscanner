@@ -19,6 +19,12 @@ def list_efda():
     return jsonify(utils.find_efda_projects("efda"))
 
 
+@server.route("/scanners/list")
+def list_scanners():
+    scanners = ["owasp", "srcclr", "efda"]
+    return jsonify(scanners)
+
+
 @server.route("/scan/efda", methods=["POST"])
 def scan_efda():
     target = request.form["target"]
