@@ -20,6 +20,7 @@ COPY scripts/install-srcclr.sh install-srcclr.sh
 RUN ./install-srcclr.sh
 
 COPY app/ app/
+COPY efda/ efda/
 COPY requirements.txt requirements.txt
 
 RUN pip3 install -r requirements.txt
