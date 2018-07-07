@@ -17,9 +17,7 @@ def scan(project_dir):
         stderr=subprocess.PIPE
     )
 
-    # We trim the 'You specified --no-upload option. Issues were not created
-    # as a result.\n' part of the results out.
-    stdout = result.stdout[:-71]
+    stdout = result.stdout
 
     # Raises CalledProcessError is return code is non-zero.
     result.check_returncode()
