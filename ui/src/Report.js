@@ -7,7 +7,19 @@ import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-c
 import {Row,Col,Button,ListGroup,ListGroupItem} from 'react-bootstrap';
 import './App.css';
 
-const Report = () => {
+
+class Report extends React.Component {
+    constructor(props) {
+        super()
+
+        this.state = {
+            options: props.location.state.options
+        }
+
+        console.log(this.state.options)
+    }
+
+    render() {
   return (
     <div>
       <div className="container">
@@ -73,7 +85,7 @@ const Report = () => {
     </div>
   )
 }
-
+}
 
 
 export default Report;

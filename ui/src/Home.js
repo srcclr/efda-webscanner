@@ -267,7 +267,7 @@ class Home extends React.Component {
                 <h3 class="startScan"> Step 2: Start Scanning! </h3>
                 Scan your selected projects
                 <hr></hr>
-                <Link to="/report"><Button bsStyle="primary">Start scan</Button></Link> {/*Home page. Scanning direct to report page */ }
+                <Link to={{ pathname: '/report', state: { options: this.state.options } }}><Button bsStyle="primary">Start scan</Button></Link> {/*Home page. Scanning direct to report page */ }
             </div>
             </div>
             </div>
