@@ -10,3 +10,4 @@ htmlcov/
 *.egg
 *.py[co]
 .vagrant/
+*node_modules/

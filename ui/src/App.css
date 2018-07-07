@@ -1,0 +1,54 @@
+body, html {
+    overflow:auto;
+}
+
+.container {
+  font-family: Century Gothic;
+    display: flex;
+  flex-direction: column;
+    margin: 0;
+  background-color: #f6f6f6;
+}
+
+.head {
+  font-weight: bold;
+  display: block;
+  position: relative;
+  top:10px;
+  text-align: center;
+  color: black;
+  background: lightblue;
+  text-transform: uppercase;
+  padding: 15px;
+}
+
+.step1 {
+  padding:50px;
+  background-color: #FFF;
+
+}
+
+.step2 {
+  padding:50px;
+  background-color: white;
+}
+.chooseProject {
+  font-weight: bold;
+  height:50px;
+}
+
+.startScan {
+  font-weight: bold;
+  height:50px;
+}
+
+.title {
+  font-family: Gill Sans MT;
+  font-size:24px;
+}
+
+.subtitle:hover {
+  text-decoration: underline;
+  color:blue;
+  cursor: pointer;
+}

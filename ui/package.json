@@ -1,0 +1,27 @@
+{
+  "name": "itp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "js": "^0.1.0",
+    "react": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
+    "react-checkbox-group": "^4.0.1",
+    "react-checkbox-tree": "^1.2.3",
+    "react-collapsible": "^2.2.0",
+    "react-collapsible-component": "^1.1.0",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "react-simple-dropdown": "^3.2.0",
+    "react-tree-menu": "^1.5.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
