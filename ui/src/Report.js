@@ -23,26 +23,27 @@ class Report extends React.Component {
         return (
             <div>
             <div className="container">
-            <h1 class="head">Report</h1>
+            <h1 className="head">Report</h1>
             <br />
-            <div class="row">
-            <div class="col">
+            <div className="row">
+            <div className="col">
             <CollapsibleComponent>
                 <CollapsibleHead className="additionalClassForHead">Report 1: Project - </CollapsibleHead> {/* Number of panel based on number of projects*/ }
-                    <CollapsibleContent class="additionalClassForContent">
+                    <CollapsibleContent className="additionalClassForContent">
 
                     <ExpectedResultsJson />
 
-                    <div class="row">
-                        <div class="col">
+                    <div className="row">
+                        <div className="col">
                             <SrcclrJson />
                         </div>
-                        <div class="col">
+                        <div className="col">
                             <OWASPJson />
                         </div>
                     </div>
                 </CollapsibleContent>
             </CollapsibleComponent>
+
             </div>
             </div>
             <br />
