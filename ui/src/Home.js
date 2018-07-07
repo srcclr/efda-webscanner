@@ -5,9 +5,29 @@ import Collapsible from 'react-collapsible';
 import './App.css';
 
 
-
 class Home extends React.Component {
+    constructor() {
+        super()
 
+        this.state = {
+            options: []
+        }
+    }
+
+    onChange(e) {
+        const options = this.state.options
+        let index
+
+        if (e.target.checked) {
+            options.push(e.target.value)
+        } else {
+            index = options.indexOf(e.target.value)
+            options.splice(index, 1)
+        }
+
+        this.setState({ options: options })
+        console.log(this.state.options)
+    }
 
 render() {
 
@@ -27,7 +47,7 @@ render() {
                   <div> {/*  Java - Maven Projects */ }
                     <Collapsible trigger="Maven" className="subtitle">
                       <div class="checkbox">
-                        <label><input type="checkbox" value=""/>Dependencies Exclusion</label>
+                        <label><input type="checkbox" value="maven-1" onChange={this.onChange.bind(this)}/>Dependencies Exclusion</label>
                       </div>
                       <div class="checkbox">
                         <label><input type="checkbox" value=""/> Interpolated Variables</label>
