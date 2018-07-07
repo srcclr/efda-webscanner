@@ -28,22 +28,28 @@ class Report extends React.Component {
             <div className="row">
             <div className="col">
             <CollapsibleComponent>
-                <CollapsibleHead className="additionalClassForHead">Report 1: Project - </CollapsibleHead>
-                    <CollapsibleContent className="additionalClassForContent">
+                { this.state.options.map((data) => {
+                    return (
+                        <React.Fragment key={data}>
+                            <CollapsibleHead className="additionalClassForHead">Report 1: Project - </CollapsibleHead>
+                                <CollapsibleContent className="additionalClassForContent">
 
-                    <ExpectedResultsJson />
+                                <ExpectedResultsJson />
 
-                    <div className="row">
-                        <div className="col">
-                            <SrcclrJson />
-                        </div>
-                        <div className="col">
-                            <OWASPJson />
-                        </div>
-                    </div>
-                </CollapsibleContent>
+                                <div className="row">
+                                    <div className="col">
+                                        <SrcclrJson />
+                                    </div>
+                                    <div className="col">
+                                        <OWASPJson />
+                                    </div>
+                                </div>
+                            </CollapsibleContent>
+                        <br /><br />
+                        </React.Fragment>
+                    )
+                })}
             </CollapsibleComponent>
-
             </div>
             </div>
             <br />
