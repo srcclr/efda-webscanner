@@ -28,7 +28,7 @@ class Report extends React.Component {
             <div className="row">
             <div className="col">
             <CollapsibleComponent>
-                <CollapsibleHead className="additionalClassForHead">Report 1: Project - </CollapsibleHead> {/* Number of panel based on number of projects*/ }
+                <CollapsibleHead className="additionalClassForHead">Report 1: Project - </CollapsibleHead>
                     <CollapsibleContent className="additionalClassForContent">
 
                     <ExpectedResultsJson />
