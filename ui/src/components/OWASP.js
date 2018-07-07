@@ -40,8 +40,8 @@ class OWASP extends Component {
                                     <thead>
                                     </thead>
                                     <tbody>
-                                        <tr>No CVE</tr>
-                                        <tr>{vulnerabilities[1]}</tr>
+                                        <tr><td>No CVE</td></tr>
+                                        <tr><td>{vulnerabilities[1]}</td></tr>
                                     </tbody>
                                 </Table>
                             )
@@ -51,8 +51,8 @@ class OWASP extends Component {
                                 <thead>
                                 </thead>
                                 <tbody>
-                                    <tr>{vulnerabilities[0]}</tr>
-                                    <tr>{vulnerabilities[1]}</tr>
+                                    <tr><td>{vulnerabilities[0]}</td></tr>
+                                    <tr><td>{vulnerabilities[1]}</td></tr>
                                 </tbody>
                             </Table>
                         )
