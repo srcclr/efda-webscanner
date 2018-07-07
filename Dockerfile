@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
 	software-properties-common \
 	python-software-properties \
 	apt-transport-https \
-	default-jdk
+	default-jdk \
+	git
 
 RUN add-apt-repository ppa:jonathonf/python-3.6 && \
 	apt-get update && \
@@ -22,6 +23,12 @@ RUN ./install-dependency-check.sh
 COPY scripts/install-srcclr.sh install-srcclr.sh
 RUN ./install-srcclr.sh
 
+RUN mkdir /efda-webscanner
+WORKDIR /efda-webscanner
+
+# We copy the .git directory as a workaround as the srcclr scanner requires
+# an initialized Git repository to work.
+COPY .git/ .git/
 COPY app/ app/
 COPY efda/ efda/
 COPY requirements.txt requirements.txt
