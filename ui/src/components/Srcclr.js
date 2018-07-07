@@ -23,7 +23,7 @@ class Srcclr extends Component {
                     <h3>Dependencies</h3>
                     {srcclrJson.libraries.map((libraries)=>{
                         return (
-                            <ListGroup>
+                            <ListGroup key={libraries}>
                                 <ListGroupItem>{libraries+""}</ListGroupItem>
                             </ListGroup>
                         )
@@ -34,7 +34,7 @@ class Srcclr extends Component {
                     {srcclrJson.vulnerabilities.map((vulnerabilities)=>{
                         if (vulnerabilities[0]==null) {
                             return (
-                                <Table striped bordered condensed hover>
+                                <Table striped bordered condensed hover key={vulnerabilities}>
                                     <thead>
                                     </thead>
                                     <tbody>
@@ -45,7 +45,7 @@ class Srcclr extends Component {
                             )
                         }
                         return (
-                            <Table striped bordered condensed hover>
+                            <Table striped bordered condensed hover key={vulnerabilities}>
                                 <thead>
                                 </thead>
                                 <tbody>

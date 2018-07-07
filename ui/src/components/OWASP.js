@@ -24,7 +24,7 @@ class OWASP extends Component {
                     <h3>Dependencies</h3>
                     {owaspJSON.libraries.map((libraries)=>{
                         return (
-                            <ListGroup>
+                            <ListGroup key={libraries}>
                                 <ListGroupItem>{libraries+""}</ListGroupItem>
                             </ListGroup>
                         )
@@ -36,7 +36,7 @@ class OWASP extends Component {
                     {owaspJSON.vulnerabilities.map((vulnerabilities)=>{
                         if (vulnerabilities[0]==null) {
                             return (
-                                <Table striped bordered condensed hover>
+                                <Table striped bordered condensed hover key={vulnerabilities}>
                                     <thead>
                                     </thead>
                                     <tbody>
@@ -47,7 +47,7 @@ class OWASP extends Component {
                             )
                         }
                         return (
-                            <Table striped bordered condensed hover>
+                            <Table striped bordered condensed hover key={vulnerabilities}>
                                 <thead>
                                 </thead>
                                 <tbody>
