@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import {Panel,ListGroup,ListGroupItem} from 'react-bootstrap';
-import expectedResultsjson from '../data/expectedresults.json';
-
-var total_dependencies = expectedResultsjson.direct_dependencies + expectedResultsjson.transitive_dependencies;
 
 
 class EFDA extends Component {
+    constructor(props) {
+        super()
+
+        this.state = {
+            efda: props.efda
+        }
+    }
 
     render() {
         return (
@@ -19,12 +23,12 @@ class EFDA extends Component {
                     <br />
                         <ListGroup>
                             <ListGroupItem bsStyle="info">
-                                <b>Total dependencies: {total_dependencies}</b> <br/>
-                                &emsp; Direct dependencies: {expectedResultsjson.direct_dependencies} <br/>
-                                &emsp; Transitive dependencies: {expectedResultsjson.transitive_dependencies}<br/>
+                                <b>Total dependencies: {this.state.efda.direct_dependencies + this.state.efda.transitive_dependencies}</b> <br/>
+                                &emsp; Direct dependencies: {this.state.efda.direct_dependencies} <br/>
+                                &emsp; Transitive dependencies: {this.state.efda.transitive_dependencies}<br/>
                             </ListGroupItem>
                             <ListGroupItem bsStyle="danger">
-                                Vulnerabilities: {expectedResultsjson.vulnerabilities}
+                                Vulnerabilities: {this.state.efda.vulnerabilities}
                             </ListGroupItem>
                         </ListGroup>
                     <br />

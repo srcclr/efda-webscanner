@@ -6,6 +6,7 @@ import EFDA from "./components/EFDA"
 import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component'
 import {Button} from 'react-bootstrap';
 import './App.css';
+import expectedResultsjson from './data/expectedresults.json';
 
 
 class Report extends React.Component {
@@ -34,7 +35,7 @@ class Report extends React.Component {
                             <CollapsibleHead className="additionalClassForHead">Report 1: Project - </CollapsibleHead>
                                 <CollapsibleContent className="additionalClassForContent">
 
-                                <EFDA />
+                                <EFDA efda={expectedResultsjson}/>
 
                                 <div className="row">
                                     <div className="col">
