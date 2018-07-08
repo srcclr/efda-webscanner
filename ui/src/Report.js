@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SrcclrJson from "./components/Srcclr"
 import OWASPJson from "./components/OWASP"
-import ExpectedResultsJson from "./components/ExpectedResults"
+import EFDA from "./components/EFDA"
 import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component'
 import {Button} from 'react-bootstrap';
 import './App.css';
@@ -34,7 +34,7 @@ class Report extends React.Component {
                             <CollapsibleHead className="additionalClassForHead">Report 1: Project - </CollapsibleHead>
                                 <CollapsibleContent className="additionalClassForContent">
 
-                                <ExpectedResultsJson />
+                                <EFDA />
 
                                 <div className="row">
                                     <div className="col">

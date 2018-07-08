@@ -5,7 +5,7 @@ import expectedResultsjson from '../data/expectedresults.json';
 var total_dependencies = expectedResultsjson.direct_dependencies + expectedResultsjson.transitive_dependencies;
 
 
-class ExpectedResults extends Component {
+class EFDA extends Component {
 
     render() {
         return (
@@ -36,4 +36,4 @@ class ExpectedResults extends Component {
     }
 }
 
-export default ExpectedResults;
+export default EFDA;
