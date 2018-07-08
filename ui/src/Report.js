@@ -5,10 +5,8 @@ import OWASPJson from "./components/OWASP"
 import EFDA from "./components/EFDA"
 import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component'
 import {Button} from 'react-bootstrap';
+import axios from 'axios';
 import './App.css';
-import expectedResultsjson from './data/expectedresults.json';
-import srcclrJson from './data/srcclr.json';
-import owaspJSON from './data/owasp.json';
 
 
 class Report extends React.Component {
@@ -16,10 +14,43 @@ class Report extends React.Component {
         super()
 
         this.state = {
-            options: props.location.state.options
+            options: props.location.state.options,
+            results: []
+        }
+    }
+
+    componentDidMount() {
+        var self = this;
+
+        function getEFDA(project) {
+            const params = new URLSearchParams();
+            params.append("target", project);
+            return axios.post('http://127.0.0.1:5000/scan/efda', params);
         }
 
-        console.log(this.state.options)
+        function getSrcclr(project) {
+            const params = new URLSearchParams();
+            params.append("target", project);
+            return axios.post('http://127.0.0.1:5000/scan/srcclr', params);
+        }
+
+        function getOWASP(project) {
+            const params = new URLSearchParams();
+            params.append("target", project);
+            return axios.post('http://127.0.0.1:5000/scan/owasp', params);
+        }
+
+        self.state.options.forEach(function(project) {
+            axios.all([getEFDA(project), getSrcclr(project), getOWASP(project)])
+                .then(axios.spread(function (efda, srcclr, owasp) {
+                    efda = efda.data
+                    srcclr = srcclr.data
+                    owasp = owasp.data
+                    self.state.results.push([efda, srcclr, owasp])
+                    console.log(self.state.results);
+                    self.forceUpdate()
+                }));
+        })
     }
 
     render() {
@@ -31,20 +62,20 @@ class Report extends React.Component {
             <div className="row">
             <div className="col">
             <CollapsibleComponent>
-                { this.state.options.map((data) => {
+                { this.state.results.map((data) => {
                     return (
                         <React.Fragment key={data}>
                             <CollapsibleHead className="additionalClassForHead">Report 1: Project - </CollapsibleHead>
                                 <CollapsibleContent className="additionalClassForContent">
 
-                                <EFDA efda={expectedResultsjson}/>
+                                <EFDA efda={data[0]}/>
 
                                 <div className="row">
                                     <div className="col">
-                                        <SrcclrJson json={srcclrJson}/>
+                                        <SrcclrJson json={data[1]}/>
                                     </div>
                                     <div className="col">
-                                        <OWASPJson json={owaspJSON}/>
+                                        <OWASPJson json={data[2]}/>
                                     </div>
                                 </div>
                             </CollapsibleContent>

@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 from app import utils
 from app.scanners import owasp, sourceclear, efda
@@ -7,6 +8,7 @@ import subprocess
 
 
 server = Flask(__name__)
+CORS(server)
 
 
 @server.route("/")
