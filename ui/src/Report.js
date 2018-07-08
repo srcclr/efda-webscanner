@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import SrcclrJson from "./components/Srcclr"
 import OWASPJson from "./components/OWASP"
 import EFDA from "./components/EFDA"
-import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component'
+import Collapsible from 'react-collapsible';
 import {Button} from 'react-bootstrap';
 import axios from 'axios';
 import './App.css';
+import './Collapsible.css';
 
 
 class Report extends React.Component {
@@ -61,12 +62,10 @@ class Report extends React.Component {
             <br />
             <div className="row">
             <div className="col">
-            <CollapsibleComponent>
                 { this.state.results.map((data) => {
                     return (
                         <React.Fragment key={data}>
-                            <CollapsibleHead className="additionalClassForHead">Report 1: Project - </CollapsibleHead>
-                                <CollapsibleContent className="additionalClassForContent">
+                            <Collapsible trigger="Report 1: Project">
 
                                 <EFDA efda={data[0]}/>
 
@@ -78,12 +77,11 @@ class Report extends React.Component {
                                         <OWASPJson json={data[2]}/>
                                     </div>
                                 </div>
-                            </CollapsibleContent>
+                            </Collapsible>
                         <br /><br />
                         </React.Fragment>
                     )
                 })}
-            </CollapsibleComponent>
             </div>
             </div>
             <br />
