@@ -39,17 +39,19 @@ class Report extends React.Component {
             return axios.post('http://127.0.0.1:5000/scan/owasp', params);
         }
 
-        self.state.options.forEach(function(project) {
-            axios.all([getEFDA(project), getSrcclr(project), getOWASP(project)])
-                .then(axios.spread(function (efda, srcclr, owasp) {
-                    efda = efda.data
-                    srcclr = srcclr.data
-                    owasp = owasp.data
-                    self.state.results.push([efda, srcclr, owasp, project])
-                    console.log(self.state.results);
-                    self.forceUpdate()
-                }));
-        })
+        (async function loop() {
+            for (const project of self.state.options) {
+                await axios.all([getEFDA(project), getSrcclr(project), getOWASP(project)])
+                    .then(axios.spread(function (efda, srcclr, owasp) {
+                        efda = efda.data
+                        srcclr = srcclr.data
+                        owasp = owasp.data
+                        self.state.results.push([efda, srcclr, owasp, project])
+                        console.log(self.state.results);
+                        self.forceUpdate()
+                    }));
+            }
+        })();
     }
 
     render() {
