@@ -45,7 +45,7 @@ class Report extends React.Component {
                     efda = efda.data
                     srcclr = srcclr.data
                     owasp = owasp.data
-                    self.state.results.push([efda, srcclr, owasp])
+                    self.state.results.push([efda, srcclr, owasp, project])
                     console.log(self.state.results);
                     self.forceUpdate()
                 }));
@@ -63,7 +63,7 @@ class Report extends React.Component {
                 { this.state.results.map((data) => {
                     return (
                         <React.Fragment key={data}>
-                            <Collapsible trigger="Report 1: Project">
+                            <Collapsible trigger={data[3]}>
 
                                 <EFDA efda={data[0]}/>
 
@@ -76,7 +76,7 @@ class Report extends React.Component {
                                     </div>
                                 </div>
                             </Collapsible>
-                        <br /><br />
+                        <br />
                         </React.Fragment>
                     )
                 })}
