@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from "./Home"
 import Report from "./Report"
 import Error from "./components/Error"
+import './App.css';
+import './Collapsible.css';
 
 
 class App extends Component {

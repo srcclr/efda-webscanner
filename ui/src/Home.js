@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {Row,Col,Button} from 'react-bootstrap';
 import Collapsible from 'react-collapsible';
-import './App.css';
 
 
 class Home extends React.Component {

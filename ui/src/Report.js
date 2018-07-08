@@ -6,8 +6,6 @@ import EFDA from "./components/EFDA"
 import Collapsible from 'react-collapsible';
 import {Button} from 'react-bootstrap';
 import axios from 'axios';
-import './App.css';
-import './Collapsible.css';
 
 
 class Report extends React.Component {
