@@ -142,7 +142,7 @@ strong {
     transform: rotateZ(180deg); }
 .Collapsible__trigger.is-disabled {
     opacity: 0.5;
-    background-color: grey; }
+    background-color: red; }
 
 .CustomTriggerCSS {
     background-color: lightcoral;

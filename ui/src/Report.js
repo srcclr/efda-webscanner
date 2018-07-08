@@ -49,7 +49,11 @@ class Report extends React.Component {
                         self.state.results.push([efda, srcclr, owasp, project])
                         console.log(self.state.results);
                         self.forceUpdate()
-                    }));
+                    }))
+                    .catch(function (error) {
+                        self.state.results.push([project])
+                        self.forceUpdate()
+                    });
             }
         })();
     }
@@ -63,24 +67,31 @@ class Report extends React.Component {
             <div className="row">
             <div className="col">
                 { this.state.results.map((data) => {
-                    return (
-                        <React.Fragment key={data}>
-                            <Collapsible trigger={data[3]}>
-
-                                <EFDA efda={data[0]}/>
-
-                                <div className="row">
-                                    <div className="col">
-                                        <SrcclrJson json={data[1]}/>
-                                    </div>
-                                    <div className="col">
-                                        <OWASPJson json={data[2]}/>
-                                    </div>
-                                </div>
+                    if (data.length === 1) {
+                        return (
+                            <Collapsible trigger={data[0] + " - Error with scanning EFDA sub-project."} triggerDisabled={true}>
                             </Collapsible>
-                        <br />
-                        </React.Fragment>
-                    )
+                        )
+                    } else {
+                        return (
+                            <React.Fragment key={data}>
+                                <Collapsible trigger={data[3]}>
+
+                                    <EFDA efda={data[0]}/>
+
+                                    <div className="row">
+                                        <div className="col">
+                                            <SrcclrJson json={data[1]}/>
+                                        </div>
+                                        <div className="col">
+                                            <OWASPJson json={data[2]}/>
+                                        </div>
+                                    </div>
+                                </Collapsible>
+                            <br />
+                            </React.Fragment>
+                        )
+                    }
                 })}
             </div>
             </div>
