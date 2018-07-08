@@ -8,6 +8,7 @@ import {Button} from 'react-bootstrap';
 import './App.css';
 import expectedResultsjson from './data/expectedresults.json';
 import srcclrJson from './data/srcclr.json';
+import owaspJSON from './data/owasp.json';
 
 
 class Report extends React.Component {
@@ -43,7 +44,7 @@ class Report extends React.Component {
                                         <SrcclrJson json={srcclrJson}/>
                                     </div>
                                     <div className="col">
-                                        <OWASPJson />
+                                        <OWASPJson json={owaspJSON}/>
                                     </div>
                                 </div>
                             </CollapsibleContent>
