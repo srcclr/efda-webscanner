@@ -26,15 +26,23 @@ RUN ./install-srcclr.sh
 RUN mkdir /efda-webscanner
 WORKDIR /efda-webscanner
 
+COPY requirements.txt requirements.txt
+
+RUN curl https://bootstrap.pypa.io/get-pip.py | python3.6
+RUN python3.6 -m pip install -r requirements.txt
+
 # We copy the .git directory as a workaround as the srcclr scanner requires
 # an initialized Git repository to work.
 COPY .git/ .git/
 COPY app/ app/
 COPY efda/ efda/
-COPY requirements.txt requirements.txt
 
-RUN curl https://bootstrap.pypa.io/get-pip.py | python3.6
-RUN python3.6 -m pip install -r requirements.txt
+# Setup the directory to properly serve React.
+COPY ui/build/index.html app/static/index.html
+COPY ui/build/favicon.ico app/static/favicon.ico
+COPY ui/build/service-worker.js app/static/service-worker.js
+COPY ui/build/static/css/ app/static/css/
+COPY ui/build/static/js/ app/static/js/
 
 ENV FLASK_APP=app/server.py
 ENV LC_ALL=C.UTF-8
