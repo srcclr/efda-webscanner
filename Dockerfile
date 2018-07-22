@@ -8,11 +8,30 @@ RUN apt-get update && apt-get install -y \
 	python-software-properties \
 	apt-transport-https \
 	default-jdk \
-	git
+	git \
+	npm \
+	ruby-dev \
+	composer \
+	ant
 
 RUN add-apt-repository ppa:jonathonf/python-3.6 && \
 	apt-get update && \
 	apt-get install -y python3.6
+
+RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && \
+	apt-get update && apt-get install -y \
+		php7.1 \
+		php7.1-mbstring \
+		php7.1-dom
+
+RUN echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+RUN apt update
+RUN apt install sbt
+
+# Install dependencies for scanners.
+RUN npm install -g bower yarn
+RUN gem install bundler
 
 COPY scripts/make-opt-directory.sh make-opt-directory.sh
 RUN ./make-opt-directory.sh
@@ -36,6 +55,10 @@ RUN python3.6 -m pip install -r requirements.txt
 COPY .git/ .git/
 COPY app/ app/
 COPY efda/ efda/
+
+# Configure stuff required for Bower.
+RUN ln -s /usr/bin/nodejs /usr/bin/node
+RUN echo "allow_root: true" > efda/javascript/bower/bower-version-ranges/srcclr.yml
 
 # Setup the directory to properly serve React.
 COPY ui/build/index.html app/static/index.html
