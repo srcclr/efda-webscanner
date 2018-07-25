@@ -1,11 +1,12 @@
 FROM ubuntu:latest
 MAINTAINER Terry Chia <terrycwk1994@gmail.com>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update && apt-get install -y \
 	curl \
 	unzip \
 	software-properties-common \
-	python-software-properties \
 	apt-transport-https \
 	default-jdk \
 	git \
