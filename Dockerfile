@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:16.04
 MAINTAINER Terry Chia <terrycwk1994@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
