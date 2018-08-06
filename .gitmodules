@@ -1,4 +1,4 @@
 [submodule "efda"]
 	path = efda
-	url = git@github.com:Ayrx/efda.git
-	branch = add-json-files
+	url = git@github.com:srcclr/efda.git
+	branch = master
