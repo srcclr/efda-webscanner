@@ -2,8 +2,22 @@
 
 ## Installation and Usage
 
-The efda-webscanner application is deployed in a Docker container.
+Clone the repository from GitHub.
 
+```
+$ git clone git@github.com:Ayrx/efda-webscanner.git
+$ git submodule update --recursive --remote
+```
+
+Build the UI with `npm`.
+
+```
+$ cd ui/
+$ npm install
+$ npm run build
+```
+
+The efda-webscanner application is deployed in a Docker container.
 
 The `build.sh` script can be used to build the Docker container image. The
 built image is tagged as `efda`.
