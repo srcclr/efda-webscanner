@@ -5,8 +5,7 @@
 Clone the repository from GitHub.
 
 ```
-$ git clone git@github.com:Ayrx/efda-webscanner.git
-$ git submodule update --recursive --remote
+$ git clone --recursive https://github.com/srcclr/efda-webscanner.git
 ```
 
 Build the UI with `npm`.
