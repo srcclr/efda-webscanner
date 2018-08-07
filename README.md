@@ -1,4 +1,4 @@
-# efda-webscanner
+# EFDA Web Scanner
 
 This is the web UI for scanning https://github.com/srcclr/efda.
 
