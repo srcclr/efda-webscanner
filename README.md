@@ -1,5 +1,7 @@
 # efda-webscanner
 
+This is the web UI for scanning https://github.com/srcclr/efda.
+
 ## Installation and Usage
 
 Clone the repository from GitHub.
